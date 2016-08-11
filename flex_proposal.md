@@ -4,9 +4,11 @@ YouTube Read is a chrome extension the allows users to simulataneously watch you
  -[ ] Moves comment section to the right of the video when in standard view mode (unless comments are disabled)
  -[ ] Moves suggested videos to below the comments and video section
  -[ ] Will highlight comments corresponding to a video timestamp (based on video upvotes)
- -[ ]
  -[ ] Possible: Infinite Scroll for Comments
 ## Design Docs
+* [Wireframes][views]
+
+[views]: ./views.md
 ## Implementation Timeline
 ### Phase 1: Page and Comment Detection (1 day)
 Objective: Be able to detect when a user is on a page with a youtube video playing
