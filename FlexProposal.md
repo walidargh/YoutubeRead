@@ -18,8 +18,17 @@ Objective: Be able to grab DOM element that contains comment section and suggest
 - [ ] Change CSS styling of those elements (using POJ not jQuery) to swap their positions
 - [ ] Add Toggle Button that allows users to move elements back to their original positions
 ### Phase 3: Extend Functionality to Account for AutoPlay
-Objectives: Ensure that there is a detection for video updates that will maintain positions of comment and suggested video sections
+Objective: Ensure that there is a detection for video updates that will maintain positions of comment and suggested video sections
 - [ ] Add listener for video player that will detect changes to video being played
 - [ ] Rerun rearranger method to return DOM elements to desired positions
-- [ ] 
+### Phase 4: Highlight Comments with Video Timestamps
+Objective: Search loaded comments for video timestamps (within a 10 second range) and display each comment for a duration corresponding to the number of characters in the comment
+- [ ] Create a hashmap of time ranges (0:00 - 0:09, 0:10 - 0:19, etc.) with key being time and corresponding value being comment
+- [ ] Use setInterval to get update corresponding comments every 10 seconds
+- [ ] Allow users to disable functionality
+- [ ] On video pause, stop setInterval
+### Phase 5: Styling
+Objective: Build Creative 
+
+Bonus: other comment filtering options/search
 
