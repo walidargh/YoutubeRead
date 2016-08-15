@@ -4,6 +4,15 @@ function moveCommentSection() {
 	sidebar.insertBefore(comments, sidebar.firstChild);
 }
 
+function swapCommentsAndVideos() {
+	var comments = document.getElementById("watch-discussion");
+	var sidebar = document.getElementById("watch7-sidebar-contents");
+	var commentsParent = comments.parentNode;
+	var commentsSibling = 
+		comments.nextSibling === sidebar ? comments : comments.nextSibling;
+	commentsParent.insertBefore(sidebar, commentsSibling);
+}
 document.addEventListener("DOMContentLoaded", function () {
 	moveCommentSection();
 });
+
