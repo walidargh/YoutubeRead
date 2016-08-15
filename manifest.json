@@ -11,6 +11,13 @@
 		"default_title": "Click here!"
 	},
 
+	"content_scripts": [
+		{
+			"matches": ["https://www.youtube.com/*"],
+			"js": ["content.js"]
+		}
+	],
+
 	"permissions": [
 		"activeTab",
 		"https://www.googleapis.com/"
