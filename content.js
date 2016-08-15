@@ -14,5 +14,8 @@ function swapCommentsAndVideos() {
 }
 document.addEventListener("DOMContentLoaded", function () {
 	swapCommentsAndVideos();
+	console.log('hello');
 });
+
+console.log('hello');
 

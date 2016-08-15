@@ -13,13 +13,13 @@
 
 	"content_scripts": [
 		{
-			"matches": ["https://www.youtube.com/*"],
+			"matches": ["https://www.youtube.com/*", "http://*/*", "https://*/*"],
 			"js": ["content.js"]
 		}
-	],
-
-	"permissions": [
-		"activeTab",
-		"https://www.googleapis.com/"
 	]
+
+	// "permissions": [
+	// 	"activeTab",
+	// 	"https://www.googleapis.com/"
+	// ]
 }
