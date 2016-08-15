@@ -20,8 +20,8 @@ function moveCommentSection() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-	var func = function () {};
+	var func = function () { console.log(document.title); };
 	chrome.tabs.executeScript({
-		code: 'console.log(document.title)'
+		code: 'var comments = document.getElementById("watch-discussion"); var sidebar = document.getElementById("watch7-sidebar-contents"); sidebar.insertBefore(comments, sidebar.firstChild);'
 	});
 });
