@@ -15,10 +15,19 @@ function swapCommentsAndVideos() {
 	relatedVideosParent.insertBefore(comments, relatedVideosParent.firstChild);
 	commentsParent.insertBefore(relatedVideos, commentsParent.firstChild);
 }
+
+function swap() {
+	var comments = document.getElementById("watch-discussion");
+	var sidebar = document.getElementById("watch7-sidebar-contents");
+	var commentsParent = comments.parentElement
+	var sidebarParents = sidebar.parentElement
+	commentsParent.appendChild(sidebar)
+	sidebarParents.insertBefore(comments, sidebarParents.firstChild)
+}
 document.addEventListener("DOMContentLoaded", function () {
-	swapCommentsAndVideos();
+	// swapCommentsAndVideos();
 	console.log('hello');
 });
 
-// swapCommentsAndVideos();
-moveCommentSection();
+swapCommentsAndVideos();
+// moveCommentSection();
