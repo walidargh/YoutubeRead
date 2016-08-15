@@ -1,0 +1,18 @@
+{
+	"manifest_version": 2,
+
+	"name": "YouTube Read",
+	"description": "This extensions allows you to browse YouTube comments while simultaneously being able to view the video.",
+	"version": "1.0",
+
+	"browser-action": {
+		"default_icon": "youtube_read.png",
+		"default_popup": "popup.html",
+		"default_title": "Click here!"
+	},
+
+	"permissions": [
+		"activeTab",
+		"https://www.googleapis.com/"
+	]
+}
