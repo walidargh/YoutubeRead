@@ -5,7 +5,7 @@
 	"description": "This extensions allows you to browse YouTube comments while simultaneously being able to view the video.",
 	"version": "1.0",
 
-	"browser-action": {
+	"browser_action": {
 		"default_icon": "youtube_read.png",
 		"default_popup": "popup.html",
 		"default_title": "Click here!"
