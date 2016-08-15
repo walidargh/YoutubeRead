@@ -20,5 +20,8 @@ function moveCommentSection() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-	moveCommentSection();
+	var func = function () {console.log(document.title)};
+	chrome.tabs.executeScript({
+		code: 'moveCommentSection();'
+	});
 });
