@@ -33,7 +33,7 @@ YouTube Read is a chrome extension the allows users to simulataneously watch you
 - [ ] Use setInterval to get update corresponding comments every 10 seconds
 - [ ] Allow users to disable functionality
 - [ ] On video pause, stop setInterval
-
+ 
 ### Phase 5: Styling (1 day)
 **Objective**: Implement smooth animations and clean styling
 - [ ] Animation for comment highlighting 
