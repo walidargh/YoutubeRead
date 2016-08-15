@@ -10,9 +10,11 @@ function swapCommentsAndVideos() {
 	var commentsParent = comments.parentNode;
 	var commentsSibling = 
 		comments.nextSibling === sidebar ? comments : comments.nextSibling;
+	sidebar.parentNode.insertBefore(comments, sidebar);
 	commentsParent.insertBefore(sidebar, commentsSibling);
 }
 document.addEventListener("DOMContentLoaded", function () {
-	moveCommentSection();
+	// moveCommentSection();
+	swapCommentsAndVideos();
 });
 
