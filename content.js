@@ -5,16 +5,14 @@ function moveCommentSection() {
 }
 
 function swapCommentsAndVideos() {
-	var comments = document.getElementById("watch-discussion");
-	var sidebar = document.getElementById("watch7-sidebar-contents");
-	var commentsParent = comments.parentNode;
-	var commentsSibling = 
-		comments.nextSibling === sidebar ? comments : comments.nextSibling;
-	sidebar.parentNode.insertBefore(comments, sidebar);
-	commentsParent.insertBefore(sidebar, commentsSibling);
+	var comments = document.getElementById("comment-section-renderer");
+	var relatedVideos = document.getElementById("watch7-sidebar-modules");
+	var commentsParent = document.getElementById("watch-discussion");
+	var relatedVideosParent = document.getElementById("watch7-sidebar-contents");
+	relatedVideosParent.insertBefore(comments, relatedVideosParent.firstChild);
+	commentsParent.insertBefore(relatedVideos, commentsParent.firstChild);
 }
 document.addEventListener("DOMContentLoaded", function () {
-	// moveCommentSection();
 	swapCommentsAndVideos();
 });
 
