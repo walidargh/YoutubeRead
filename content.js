@@ -19,15 +19,19 @@ function swapCommentsAndVideos() {
 function swap() {
 	var comments = document.getElementById("watch-discussion");
 	var sidebar = document.getElementById("watch7-sidebar-contents");
-	var commentsParent = comments.parentElement
-	var sidebarParents = sidebar.parentElement
-	commentsParent.appendChild(sidebar)
-	sidebarParents.insertBefore(comments, sidebarParents.firstChild)
+	var commentsParent = comments.parentElement;
+	var sidebarParent = sidebar.parentElement;
+	commentsParent.appendChild(sidebar);
+	sidebarParent.insertBefore(comments, sidebarParent.firstChild);
+	sidebarParent.style.height = "400px";
+	// sidebarParent.style.overflow-y = "scroll";
+	// sidebarParent.style.overflow-x = "hidden";
 }
 document.addEventListener("DOMContentLoaded", function () {
 	// swapCommentsAndVideos();
 	console.log('hello');
 });
 
-swapCommentsAndVideos();
+// swapCommentsAndVideos();
 // moveCommentSection();
+swap();
