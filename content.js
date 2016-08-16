@@ -1,12 +1,10 @@
 function moveCommentSection() {
-	console.log('moving stuff');
 	var comments = document.getElementById("watch-discussion");
 	var sidebar = document.getElementById("watch7-sidebar-contents");
 	sidebar.insertBefore(comments, sidebar.firstChild);
 }
 
 function swapCommentsAndVideos() {
-	console.log('swapping stuff');
 	var comments = document.getElementById("comment-section-renderer");
 	var relatedVideos = document.getElementById("watch7-sidebar-modules");
 	var commentsParent = document.getElementById("watch-discussion");
@@ -16,7 +14,6 @@ function swapCommentsAndVideos() {
 }
 
 function swap() {
-	console.log('swapping');
 	var comments = document.getElementById("watch-discussion");
 	var sidebar = document.getElementById("watch7-sidebar-contents");
 	var commentsParent = comments.parentElement;
