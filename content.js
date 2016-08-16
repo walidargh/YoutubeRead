@@ -40,4 +40,4 @@ function swap() {
 }
 
 document.addEventListener("spfdone", swap);
-document.addEventListener("DOMContentLoaded", swap);
+swap();

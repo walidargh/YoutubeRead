@@ -13,19 +13,19 @@ YouTube Read is a chrome extension the allows users to simulataneously watch you
 
 ### Phase 1: Page and Comment Detection (1 day)
 **Objective**: Be able to detect when a user is on a page with a youtube video playing
-- [ ] Detect if user is on a video by checking URL for "watch=?v" or "/v/"
+- [X] Detect if user is on a video by checking URL for "watch=?v" or "/v/"
 - [ ] Detect if video allows for comments
 
 ### Phase 2: Rearrange Comment Section and Suggested Videos (2 days)
 **Objective**: Be able to grab DOM element that contains comment section and suggested videos section
-- [ ] Search DOM for element by className corresponding to comment section and suggested videos
-- [ ] Change CSS styling of those elements (using POJ not jQuery) to swap their positions
+- [X] Search DOM for element by className corresponding to comment section and suggested videos
+- [X] Change CSS styling of those elements (using POJ not jQuery) to swap their positions
 - [ ] Add Toggle Button that allows users to move elements back to their original positions
 
 ### Phase 3: Extend Functionality to Account for AutoPlay (2 days)
 **Objective**: Ensure that there is a detection for video updates that will maintain positions of comment and suggested video sections
-- [ ] Add listener for video player that will detect changes to video being played
-- [ ] Rerun rearranger method to return DOM elements to desired positions
+- [X] Add listener for video player that will detect changes to video being played
+- [X] Rerun rearranger method to return DOM elements to desired positions
 
 ### Phase 4: Highlight Comments with Video Timestamps (3 days)
 **Objective**: Search loaded comments for video timestamps (within a 10 second range) and display each comment for a duration corresponding to the number of characters in the comment
