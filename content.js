@@ -1,6 +1,5 @@
 function moveCommentSection() {
 	console.log('moving stuff');
-	debugger
 	var comments = document.getElementById("watch-discussion");
 	var sidebar = document.getElementById("watch7-sidebar-contents");
 	sidebar.insertBefore(comments, sidebar.firstChild);
@@ -27,23 +26,7 @@ function swap() {
 	comments.style.height = "100vh";
 	comments.style.overflowY = "scroll";
 	comments.style.overflowX = "hidden";
-	// sidebarParent.style.overflow-y = "scroll";
-	// sidebarParent.style.overflow-x = "hidden";
 }
-document.addEventListener("DOMContentLoaded", function () {
-	// swapCommentsAndVideos();
-	console.log('hello');
-});
 
-// window.onload = function () {
-// 	console.log('hello');
-// 	swap();
-// };
-// swapCommentsAndVideos();
-// moveCommentSection();
-// swap();
-// window.onload = function() {
-// 	document.write('Hello world');
-// };
 document.addEventListener("spfdone", swap);
 document.addEventListener("DOMContentLoaded", swap);
