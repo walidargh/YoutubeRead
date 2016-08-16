@@ -29,9 +29,11 @@ function swap() {
 	comments.style.overflowX = "hidden";
 	var sidebarHead = document.getElementsByClassName("watch-sidebar-head")[0];
 	sidebarHead.style.padding = "0px 0px 10px 5px";
-	sidebarHead.style.position = "relative";
-	var autoPlayButton = document.getElementsByClassName("checkbox-on-off")[0];
-	autoPlayButton.style.padding = "10px";
+	var autoPlayBar = document.getElementsByClassName("autoplay-bar")[0];
+	autoPlayBar.style.position = "relative";
+	// sidebarHead.style.position = "relative";
+	// var autoPlayButton = document.getElementsByClassName("checkbox-on-off")[0];
+	// autoPlayButton.style.padding = "10px";
 }
 
 document.addEventListener("spfdone", swap);
