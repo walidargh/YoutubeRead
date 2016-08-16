@@ -41,7 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
 // };
 // swapCommentsAndVideos();
 // moveCommentSection();
-swap();
+// swap();
 // window.onload = function() {
 // 	document.write('Hello world');
 // };
+document.addEventListener("spfdone", swap);
+document.addEventListener("DOMContentLoaded", swap);
