@@ -1,5 +1,5 @@
 function toggleCommentAndVideoSwap() {
-  console.log('we are in the toggle')
+  console.log('we are in the toggle');
 	var queryInfo = {
     active: true,
     currentWindow: true
@@ -28,6 +28,5 @@ function moveCommentSection() {
 document.addEventListener("DOMContentLoaded", function() {
   var root = document.getElementById("root");
   root.addEventListener("click", toggleCommentAndVideoSwap);
-  console.log('hello')
 })
 
