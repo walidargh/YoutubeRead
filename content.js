@@ -38,8 +38,8 @@ function undoSwap() {
 	var sidebar = document.getElementById("watch7-sidebar-contents");
 	var commentsParent = comments.parentElement;
 	var sidebarParent = sidebar.parentElement;
-	commentsParent.appendChild(comments);
-	sidebarParent.insertBefore(sidebar, sidebarParent.firstChild);
+	sidebarParent.appendChild(comments);
+	commentsParent.insertBefore(sidebar, commentsParent.firstChild);
 	comments.style.height = "";
 	comments.style.width = "";
 	comments.style.overflowY = "";
@@ -47,10 +47,6 @@ function undoSwap() {
 	comments.style.position = "";
 	comments.style.marginTop = "";
 	sidebar.style.padding = "";
-	var sidebarHead = document.getElementsByClassName("watch-sidebar-head")[0];
-	sidebarHead.style.padding = "";
-	var autoPlayBar = document.getElementsByClassName("autoplay-bar")[0];
-	autoPlayBar.style.position = "";
 }
 
 document.addEventListener("spfdone", swapCommentsAndVideos);
