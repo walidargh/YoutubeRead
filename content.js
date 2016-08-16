@@ -23,9 +23,15 @@ function swap() {
 	var sidebarParent = sidebar.parentElement;
 	commentsParent.appendChild(sidebar);
 	sidebarParent.insertBefore(comments, sidebarParent.firstChild);
-	comments.style.height = "100vh";
+	comments.style.height = "88vh";
+	comments.style.width = "39vw";
 	comments.style.overflowY = "scroll";
 	comments.style.overflowX = "hidden";
+	var sidebarHead = document.getElementsByClassName("watch-sidebar-head")[0];
+	sidebarHead.style.padding = "0px 0px 10px 5px";
+	sidebarHead.style.position = "relative";
+	var autoPlayButton = document.getElementsByClassName("checkbox-on-off")[0];
+	autoPlayButton.style.padding = "10px";
 }
 
 document.addEventListener("spfdone", swap);
