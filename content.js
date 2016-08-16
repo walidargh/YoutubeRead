@@ -27,6 +27,9 @@ function swap() {
 	comments.style.width = "39vw";
 	comments.style.overflowY = "scroll";
 	comments.style.overflowX = "hidden";
+	comments.style.position = "fixed";
+	comments.style.marginTop = "10px";
+	sidebar.style.padding = "10px";
 	var sidebarHead = document.getElementsByClassName("watch-sidebar-head")[0];
 	sidebarHead.style.padding = "0px 0px 10px 5px";
 	var autoPlayBar = document.getElementsByClassName("autoplay-bar")[0];
