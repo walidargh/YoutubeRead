@@ -23,7 +23,9 @@ function swap() {
 	var sidebarParent = sidebar.parentElement;
 	commentsParent.appendChild(sidebar);
 	sidebarParent.insertBefore(comments, sidebarParent.firstChild);
-	sidebarParent.style.height = "400px";
+	comments.style.height = "500px";
+	comments.style.overflowY = "scroll";
+	comments.style.overflowX = "hidden";
 	// sidebarParent.style.overflow-y = "scroll";
 	// sidebarParent.style.overflow-x = "hidden";
 }
