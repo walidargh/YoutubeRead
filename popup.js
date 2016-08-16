@@ -1,4 +1,5 @@
 function toggleCommentAndVideoSwap() {
+  console.log('we are in the toggle')
 	var queryInfo = {
     active: true,
     currentWindow: true
@@ -24,4 +25,9 @@ function moveCommentSection() {
 // 		code: 'var comments = document.getElementById("watch-discussion"); var sidebar = document.getElementById("watch7-sidebar-contents"); sidebar.insertBefore(comments, sidebar.firstChild);'
 // 	});
 // });
-document.addEventListener("click", toggleCommentAndVideoSwap);
+document.addEventListener("DOMContentLoaded", function() {
+  var root = document.getElementById("root");
+  root.addEventListener("click", toggleCommentAndVideoSwap);
+  console.log('hello')
+})
+

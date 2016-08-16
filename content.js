@@ -60,7 +60,7 @@ document.addEventListener("spfdone", swapCommentsAndVideos);
 swapCommentsAndVideos();
 
 chrome.runtime.onMessage.addListener(function (request, sender, senderResponse) {
-	console.log("the message has been received" + senderResponse)
+	console.log("the message has been received" + senderResponse);
 });
 
 // TODO: fix issue comment section moving in theater mode
