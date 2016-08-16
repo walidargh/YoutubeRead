@@ -5,7 +5,7 @@ function toggleCommentAndVideoSwap() {
     currentWindow: true
   };
 
-  chrome.tabs.query(queryInfo, function() {
+  chrome.tabs.query(queryInfo, function(tabs) {
   	var tab = tabs[0];
     chrome.tabs.sendMessage(tab.id, {action: "toggleSwap"});
   });
