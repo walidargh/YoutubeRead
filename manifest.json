@@ -13,13 +13,14 @@
 
 	"content_scripts": [
 		{
-			"matches": ["https://www.youtube.com/*"],
-			"js": ["content.js"]
+			"matches": ["https://www.youtube.com/*", "http://www.youtube.com/"],
+			"js": ["content.js"],
+			"run_at": "document_end"
 		}
-	]
+	],
 
-	// "permissions": [
-	// 	"activeTab",
-	// 	"https://www.googleapis.com/"
-	// ]
+	"permissions": [
+		"activeTab",
+		"https://www.youtube.com/"
+	]
 }

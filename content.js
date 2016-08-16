@@ -35,9 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	console.log('hello');
 });
 
-window.onload = function () {
-	swap();
-}
+// window.onload = function () {
+// 	console.log('hello');
+// 	swap();
+// };
 // swapCommentsAndVideos();
 // moveCommentSection();
 swap();
+// window.onload = function() {
+// 	document.write('Hello world');
+// };
