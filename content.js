@@ -60,13 +60,8 @@ document.addEventListener("spfdone", swapCommentsAndVideos);
 swapCommentsAndVideos();
 
 chrome.runtime.onMessage.addListener(function(request, sender, senderResponse) {
-	console.log(request)
-	console.log("hello");
-	console.log("the message has been received" + senderResponse);
 });
-// chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 
-// });
 
 // TODO: fix issue comment section moving in theater mode
 /* Change comment section position to static in theater mode*/
