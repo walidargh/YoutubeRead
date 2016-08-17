@@ -1,17 +1,9 @@
+var currentSideBar = "relatedVideos";
 function moveCommentSection() {
 	var comments = document.getElementById("watch-discussion");
 	var sidebar = document.getElementById("watch7-sidebar-contents");
 	sidebar.insertBefore(comments, sidebar.firstChild);
 }
-
-// function swapCommentsAndVideos() {
-// 	var comments = document.getElementById("comment-section-renderer");
-// 	var relatedVideos = document.getElementById("watch7-sidebar-modules");
-// 	var commentsParent = document.getElementById("watch-discussion");
-// 	var relatedVideosParent = document.getElementById("watch7-sidebar-contents");
-// 	relatedVideosParent.insertBefore(comments, relatedVideosParent.firstChild);
-// 	commentsParent.insertBefore(relatedVideos, commentsParent.firstChild);
-// }
 
 function swapCommentsAndVideos() {
 	var comments = document.getElementById("watch-discussion");
@@ -31,6 +23,7 @@ function swapCommentsAndVideos() {
 	sidebarHead.style.padding = "0px 0px 10px 5px";
 	var autoPlayBar = document.getElementsByClassName("autoplay-bar")[0];
 	autoPlayBar.style.position = "relative";
+	currentSideBar = "comments";
 }
 
 function undoSwap() {
@@ -47,6 +40,7 @@ function undoSwap() {
 	comments.style.position = "";
 	comments.style.marginTop = "";
 	sidebar.style.padding = "";
+	currentSideBar = "relatedVideos";
 }
 
 function detectLoadMoreComments() {
@@ -61,7 +55,11 @@ swapCommentsAndVideos();
 
 chrome.runtime.onMessage.addListener(function(request, sender, senderResponse) {
 	if (request.action === "toggleSwap") {
-		undoSwap();
+		if (currentSideBar === "comments") {
+			undoSwap();	
+		} else {
+			swapCommentsAndVideos();
+		}
 	}
 });
 
