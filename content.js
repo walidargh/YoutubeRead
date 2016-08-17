@@ -48,9 +48,20 @@ function detectLoadMoreComments() {
 	comments.scrollTop >= (comments.scrollHeight - comments.offsetHeight - 10);
 }
 
+function theaterModeConfig() {
+	var comments = document.getElementById("watch-discussion");
+	if (defaultVideoView) {
+		comments.style.position = "relative"
+	} else {
+		comments.style.position = "fixed"
+	} 
+	defaultVideoView = !defaultVideoView
+}
+
 
 var button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
-var defaultVideo = button.title === "Default view" ? true : false;
+var defaultVideoView = button.title === "Default view" ? true : false;
+button.addEventListener("click", theaterModeConfig)
 document.addEventListener("spfdone", swapCommentsAndVideos);
 swapCommentsAndVideos();
 
