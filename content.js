@@ -60,6 +60,9 @@ document.addEventListener("spfdone", swapCommentsAndVideos);
 swapCommentsAndVideos();
 
 chrome.runtime.onMessage.addListener(function(request, sender, senderResponse) {
+	if (request.action === "toggleSwap") {
+		undoSwap();
+	}
 });
 
 
