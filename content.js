@@ -49,7 +49,8 @@ function detectLoadMoreComments() {
 }
 
 
-
+var button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
+var defaultVideo = button.title === "Default view" ? true : false;
 document.addEventListener("spfdone", swapCommentsAndVideos);
 swapCommentsAndVideos();
 
