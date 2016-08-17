@@ -13,6 +13,7 @@
 
 	"content_scripts": [
 		{
+			"all_frames": true,
 			"matches": [ "*://*.youtube.com/*" ],
 			"js": ["content.js"],
 			"run_at": "document_end"

@@ -60,6 +60,7 @@ document.addEventListener("spfdone", swapCommentsAndVideos);
 swapCommentsAndVideos();
 
 chrome.runtime.onMessage.addListener(function (request, sender, senderResponse) {
+	console.log("hello");
 	console.log("the message has been received" + senderResponse);
 });
 
