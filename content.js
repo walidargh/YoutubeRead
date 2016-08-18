@@ -1,4 +1,5 @@
 var currentSideBar = "relatedVideos";
+
 function moveCommentSection() {
 	var comments = document.getElementById("watch-discussion");
 	var sidebar = document.getElementById("watch7-sidebar-contents");
@@ -15,7 +16,6 @@ function swapCommentsAndVideos() {
 	styleComments(comments);
 	styleSidebar(sidebar);
 	currentSideBar = "comments";
-	// handle the current view (default or theater)
 }
 
 function styleComments(comments) {
@@ -42,6 +42,11 @@ function undoSwap() {
 	var sidebarParent = sidebar.parentElement;
 	sidebarParent.appendChild(comments);
 	commentsParent.insertBefore(sidebar, commentsParent.firstChild);
+	undoStyling(comments, sidebar);
+	currentSideBar = "relatedVideos";
+}
+
+function undoStyling(comments, sidebar) {
 	comments.style.height = "";
 	comments.style.width = "";
 	comments.style.overflowY = "";
@@ -49,8 +54,8 @@ function undoSwap() {
 	comments.style.position = "";
 	comments.style.marginTop = "";
 	sidebar.style.padding = "";
-	currentSideBar = "relatedVideos";
 }
+
 
 function detectLoadMoreComments() {
 	var comments = document.getElementById("watch-discussion");
@@ -73,7 +78,6 @@ var defaultVideoView = button.title === "Default view" ? false : true;
 button.addEventListener("click", toggleView);
 document.addEventListener("spfdone", swapCommentsAndVideos);
 swapCommentsAndVideos();
-if (defaultVideoView)
 
 chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) {
 	if (request.action === "toggleSwap") {
