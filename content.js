@@ -12,19 +12,27 @@ function swapCommentsAndVideos() {
 	var sidebarParent = sidebar.parentElement;
 	commentsParent.appendChild(sidebar);
 	sidebarParent.insertBefore(comments, sidebarParent.firstChild);
+	styleComments(comments);
+	styleSidebar(sidebar);
+	currentSideBar = "comments";
+	// handle the current view (default or theater)
+}
+
+function styleComments(comments) {
 	comments.style.height = "88vh";
 	comments.style.width = "39vw";
 	comments.style.overflowY = "scroll";
 	comments.style.overflowX = "hidden";
 	comments.style.position = defaultVideoView ? "fixed" : "relative";
 	comments.style.marginTop = defaultVideoView ? "10px" : "0px";
+}
+
+function styleSidebar(sidebar) {
 	sidebar.style.padding = "10px";
 	var sidebarHead = document.getElementsByClassName("watch-sidebar-head")[0];
 	sidebarHead.style.padding = "0px 0px 10px 5px";
 	var autoPlayBar = document.getElementsByClassName("autoplay-bar")[0];
 	autoPlayBar.style.position = "relative";
-	currentSideBar = "comments";
-	// handle the current view (default or theater)
 }
 
 function undoSwap() {
