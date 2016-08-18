@@ -16,14 +16,15 @@ function swapCommentsAndVideos() {
 	comments.style.width = "39vw";
 	comments.style.overflowY = "scroll";
 	comments.style.overflowX = "hidden";
-	comments.style.position = "fixed";
-	comments.style.marginTop = "10px";
+	comments.style.position = defaultVideoView ? "fixed" : "relative";
+	comments.style.marginTop = defaultVideoView ? "10px" : "0px";
 	sidebar.style.padding = "10px";
 	var sidebarHead = document.getElementsByClassName("watch-sidebar-head")[0];
 	sidebarHead.style.padding = "0px 0px 10px 5px";
 	var autoPlayBar = document.getElementsByClassName("autoplay-bar")[0];
 	autoPlayBar.style.position = "relative";
 	currentSideBar = "comments";
+	// handle the current view (default or theater)
 }
 
 function undoSwap() {
@@ -48,24 +49,25 @@ function detectLoadMoreComments() {
 	comments.scrollTop >= (comments.scrollHeight - comments.offsetHeight - 10);
 }
 
-function theaterModeConfig() {
+function toggleView() {
 	var comments = document.getElementById("watch-discussion");
+	defaultVideoView = !defaultVideoView;
 	if (defaultVideoView) {
-		comments.style.position = "relative"
+		comments.style.position = "fixed";
 	} else {
-		comments.style.position = "fixed"
+		comments.style.position = "relative";
 	} 
-	defaultVideoView = !defaultVideoView
 }
 
 
 var button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
-var defaultVideoView = button.title === "Default view" ? true : false;
-button.addEventListener("click", theaterModeConfig)
+var defaultVideoView = button.title === "Default view" ? false : true;
+button.addEventListener("click", toggleView);
 document.addEventListener("spfdone", swapCommentsAndVideos);
 swapCommentsAndVideos();
+if (defaultVideoView)
 
-chrome.runtime.onMessage.addListener(function(request, sender, senderResponse) {
+chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) {
 	if (request.action === "toggleSwap") {
 		if (currentSideBar === "comments") {
 			undoSwap();	
