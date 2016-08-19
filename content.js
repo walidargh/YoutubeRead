@@ -1,4 +1,8 @@
-var currentSideBar = "relatedVideos";
+function moveCommentSection() {
+	var comments = document.getElementById("watch-discussion");
+	var sidebar = document.getElementById("watch7-sidebar-contents");
+	sidebar.insertBefore(comments, sidebar.firstChild);
+}
 
 function swapCommentsAndVideos() {
 	var comments = document.getElementById("watch-discussion");
@@ -66,12 +70,17 @@ function toggleView() {
 	} 
 }
 
+var currentSideBar = "relatedVideos";
+var button;
+var defaultVideoView;
 
-var button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
-var defaultVideoView = button.title === "Default view" ? false : true;
-button.addEventListener("click", toggleView);
-document.addEventListener("spfdone", swapCommentsAndVideos);
-swapCommentsAndVideos();
+document.addEventListener("spfdone", function () {
+	button = null;
+	button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
+	button.addEventListener("click", toggleView);
+	defaultVideoView = button.title === "Default view" ? false : true;
+	swapCommentsAndVideos();
+});
 
 chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) {
 	if (request.action === "toggleSwap") {
