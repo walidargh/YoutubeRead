@@ -23,6 +23,14 @@ function styleComments(comments) {
 	comments.style.overflowX = "hidden";
 	comments.style.position = defaultVideoView ? "fixed" : "relative";
 	comments.style.marginTop = defaultVideoView ? "10px" : "0px";
+	comments.addEventListener("scroll", loadMoreComments);
+}
+
+function loadMoreComments(event) {
+	if (detectLoadMoreComments) {
+		var loadButton = document.getElementsByClassName("yt-uix-button yt-uix-button-size-default yt-uix-button-default load-more-button yt-uix-load-more comment-section-renderer-paginator yt-uix-sessionlink")[0];
+		loadButton.click();
+	}
 }
 
 function styleSidebar(sidebar) {
@@ -81,6 +89,7 @@ document.addEventListener("spfdone", function () {
 	defaultVideoView = button.title === "Default view" ? false : true;
 	swapCommentsAndVideos();
 });
+
 
 chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) {
 	if (request.action === "toggleSwap") {
