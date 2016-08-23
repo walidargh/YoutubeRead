@@ -67,19 +67,20 @@ function detectLoadMoreComments() {
 function toggleView() {
 	var comments = document.getElementById("watch-discussion");
 	defaultVideoView = !defaultVideoView;
-	if (defaultVideoView) {
+	if (defaultVideoView  && commentSideBar) {
 		comments.style.position = "fixed";
 	} else {
 		comments.style.position = "relative";
 	} 
 }
 
-var commentSideBar = false;
+var commentSideBar;
 var button;
 var defaultVideoView;
 
 document.addEventListener("spfdone", function () {
 	button = null;
+	commentSideBar = false;
 	button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
 	var comments = document.getElementById("watch-discussion");
 	var sidebar = document.getElementById("watch7-sidebar-contents");
