@@ -1,21 +1,3 @@
-// function moveCommentSection() {
-// 	var comments = document.getElementById("watch-discussion");
-// 	var sidebar = document.getElementById("watch7-sidebar-contents");
-// 	sidebar.insertBefore(comments, sidebar.firstChild);
-// }
-
-// function swapCommentsAndVideos() {
-// 	var comments = document.getElementById("watch-discussion");
-// 	var sidebar = document.getElementById("watch7-sidebar-contents");
-// 	var commentsParent = comments.parentElement;
-// 	var sidebarParent = sidebar.parentElement;
-// 	commentsParent.appendChild(sidebar);
-// 	sidebarParent.insertBefore(comments, sidebarParent.firstChild);
-// 	styleComments(comments);
-// 	styleSidebar(sidebar);
-// 	currentSideBar = "comments";
-// }
-
 function styleComments() {
 	comments.style.height = "88vh";
 	comments.style.width = "39vw";
@@ -42,16 +24,6 @@ function styleSidebar() {
 	autoPlayBar.style.position = "relative";
 }
 
-// function undoSwap() {
-// 	var comments = document.getElementById("watch-discussion");
-// 	var sidebar = document.getElementById("watch7-sidebar-contents");
-// 	var commentsParent = comments.parentElement;
-// 	var sidebarParent = sidebar.parentElement;
-// 	sidebarParent.appendChild(comments);
-// 	commentsParent.insertBefore(sidebar, commentsParent.firstChild);
-// 	undoStyling(comments, sidebar);
-// 	currentSideBar = "relatedVideos";
-// }
 
 function swapElements(elementA, elementB) {
 	var parentA = elementA.parentElement;
