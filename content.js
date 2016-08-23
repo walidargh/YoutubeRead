@@ -70,6 +70,8 @@ function undoStyling(comments, sidebar) {
 	comments.style.position = "";
 	comments.style.marginTop = "";
 	sidebar.style.padding = "";
+	var sidebarHead = document.getElementsByClassName("watch-sidebar-head")[0];
+	sidebarHead.style.margin = "";
 }
 
 
