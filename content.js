@@ -4,19 +4,19 @@
 // 	sidebar.insertBefore(comments, sidebar.firstChild);
 // }
 
-function swapCommentsAndVideos() {
-	var comments = document.getElementById("watch-discussion");
-	var sidebar = document.getElementById("watch7-sidebar-contents");
-	var commentsParent = comments.parentElement;
-	var sidebarParent = sidebar.parentElement;
-	commentsParent.appendChild(sidebar);
-	sidebarParent.insertBefore(comments, sidebarParent.firstChild);
-	styleComments(comments);
-	styleSidebar(sidebar);
-	currentSideBar = "comments";
-}
+// function swapCommentsAndVideos() {
+// 	var comments = document.getElementById("watch-discussion");
+// 	var sidebar = document.getElementById("watch7-sidebar-contents");
+// 	var commentsParent = comments.parentElement;
+// 	var sidebarParent = sidebar.parentElement;
+// 	commentsParent.appendChild(sidebar);
+// 	sidebarParent.insertBefore(comments, sidebarParent.firstChild);
+// 	styleComments(comments);
+// 	styleSidebar(sidebar);
+// 	currentSideBar = "comments";
+// }
 
-function styleComments(comments) {
+function styleComments() {
 	comments.style.height = "88vh";
 	// comments.style.width = "39vw";
 	comments.style.overflowY = "scroll";
@@ -32,7 +32,7 @@ function loadMoreComments(event) {
 	}
 }
 
-function styleSidebar(sidebar) {
+function styleSidebar() {
 	sidebar.style.padding = "10px";
 	var sidebarHead = document.getElementsByClassName("watch-sidebar-head")[0];
 	sidebarHead.style.padding = "0px 0px 10px 5px";
@@ -60,9 +60,16 @@ function swapElements(elementA, elementB) {
 	parentB.insertBefore(elementA, bSibling);
 	currentSideBar = 
 		currentSideBar === "comments" ? "relatedVideos" : "comments";
+	debugger
+	if (currentSideBar === "comments") {
+		styleSidebar();
+		styleComments();
+	} else {
+		undoStyling();
+	}
 }
 
-function undoStyling(comments, sidebar) {
+function undoStyling() {
 	comments.style.height = "";
 	comments.style.width = "";
 	comments.style.overflowY = "";
@@ -71,7 +78,7 @@ function undoStyling(comments, sidebar) {
 	comments.style.marginTop = "";
 	sidebar.style.padding = "";
 	var sidebarHead = document.getElementsByClassName("watch-sidebar-head")[0];
-	sidebarHead.style.margin = "";
+	sidebarHead.style.margin = "0px";
 }
 
 
@@ -93,12 +100,14 @@ function toggleView() {
 var currentSideBar = "relatedVideos";
 var button;
 var defaultVideoView;
+var comments;
+var sidebar;
 
 document.addEventListener("spfdone", function () {
 	button = null;
 	button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
-	var comments = document.getElementById("watch-discussion");
-	var sidebar = document.getElementById("watch7-sidebar-contents");
+	comments = document.getElementById("watch-discussion");
+	sidebar = document.getElementById("watch7-sidebar-contents");
 	button.addEventListener("click", toggleView);
 	defaultVideoView = button.title === "Default view" ? false : true;
 	swapElements(comments, sidebar);
@@ -106,9 +115,9 @@ document.addEventListener("spfdone", function () {
 
 
 chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) {
+	comments = document.getElementById("watch-discussion");
+	sidebar = document.getElementById("watch7-sidebar-contents");
 	if (request.action === "toggleSwap") {
-		var comments = document.getElementById("watch-discussion");
-		var sidebar = document.getElementById("watch7-sidebar-contents");
 		if (currentSideBar === "comments") {
 			swapElements(sidebar, comments);
 			undoStyling(comments, sidebar);
