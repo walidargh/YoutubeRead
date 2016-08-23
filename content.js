@@ -18,10 +18,12 @@
 
 function styleComments() {
 	comments.style.height = "88vh";
-	// comments.style.width = "39vw";
+	comments.style.width = "39vw";
+	comments.style.marginTop = "10px";
 	comments.style.overflowY = "scroll";
 	comments.style.overflowX = "hidden";
 	comments.style.position = defaultVideoView ? "fixed" : "relative";
+	comments.style.marginTop = defaultVideoView ? "10px" : "0px";
 	comments.addEventListener("scroll", loadMoreComments);
 }
 
@@ -60,10 +62,9 @@ function swapElements(elementA, elementB) {
 	parentB.insertBefore(elementA, bSibling);
 	currentSideBar = 
 		currentSideBar === "comments" ? "relatedVideos" : "comments";
-	debugger
 	if (currentSideBar === "comments") {
-		styleSidebar();
 		styleComments();
+		styleSidebar();
 	} else {
 		undoStyling();
 	}
@@ -118,14 +119,7 @@ chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) 
 	comments = document.getElementById("watch-discussion");
 	sidebar = document.getElementById("watch7-sidebar-contents");
 	if (request.action === "toggleSwap") {
-		if (currentSideBar === "comments") {
-			swapElements(sidebar, comments);
-			undoStyling(comments, sidebar);
-		} else {
-			swapElements(sidebar, comments);
-			styleSidebar(sidebar);
-			styleComments(comments);
-		}
+		swapElements(comments, sidebar);
 	}
 });
 
