@@ -97,9 +97,11 @@ var defaultVideoView;
 document.addEventListener("spfdone", function () {
 	button = null;
 	button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
+	var comments = document.getElementById("watch-discussion");
+	var sidebar = document.getElementById("watch7-sidebar-contents");
 	button.addEventListener("click", toggleView);
 	defaultVideoView = button.title === "Default view" ? false : true;
-	swapCommentsAndVideos();
+	swapElements(comments, sidebar);
 });
 
 
