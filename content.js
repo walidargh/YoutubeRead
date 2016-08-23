@@ -1,4 +1,5 @@
 function styleComments() {
+	var comments = document.getElementById("watch-discussion");
 	comments.style.height = "88vh";
 	comments.style.width = "39vw";
 	comments.style.marginTop = "10px";
@@ -17,6 +18,7 @@ function loadMoreComments(event) {
 }
 
 function styleSidebar() {
+	var sidebar = document.getElementById("watch7-sidebar-contents");
 	sidebar.style.padding = "10px";
 	var sidebarHead = document.getElementsByClassName("watch-sidebar-head")[0];
 	sidebarHead.style.padding = "0px 0px 10px 5px";
@@ -32,9 +34,8 @@ function swapElements(elementA, elementB) {
 	var bSibling = elementB.nextElementSibling;
 	parentA.insertBefore(elementB, aSibling);
 	parentB.insertBefore(elementA, bSibling);
-	currentSideBar = 
-		currentSideBar === "comments" ? "relatedVideos" : "comments";
-	if (currentSideBar === "comments") {
+	commentSideBar = !commentSideBar;
+	if (commentSideBar) {
 		styleComments();
 		styleSidebar();
 	} else {
@@ -43,6 +44,9 @@ function swapElements(elementA, elementB) {
 }
 
 function undoStyling() {
+	var sidebar = document.getElementById("watch7-sidebar-contents");
+	var comments = document.getElementById("watch-discussion");
+
 	comments.style.height = "";
 	comments.style.width = "";
 	comments.style.overflowY = "";
@@ -70,17 +74,15 @@ function toggleView() {
 	} 
 }
 
-var currentSideBar = "relatedVideos";
+var commentSideBar = false;
 var button;
 var defaultVideoView;
-var comments;
-var sidebar;
 
 document.addEventListener("spfdone", function () {
 	button = null;
 	button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
-	comments = document.getElementById("watch-discussion");
-	sidebar = document.getElementById("watch7-sidebar-contents");
+	var comments = document.getElementById("watch-discussion");
+	var sidebar = document.getElementById("watch7-sidebar-contents");
 	button.addEventListener("click", toggleView);
 	defaultVideoView = button.title === "Default view" ? false : true;
 	swapElements(comments, sidebar);
@@ -88,8 +90,8 @@ document.addEventListener("spfdone", function () {
 
 
 chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) {
-	// comments = document.getElementById("watch-discussion");
-	// sidebar = document.getElementById("watch7-sidebar-contents");
+	var comments = document.getElementById("watch-discussion");
+	var sidebar = document.getElementById("watch7-sidebar-contents");
 	if (request.action === "toggleSwap") {
 		swapElements(comments, sidebar);
 	}
