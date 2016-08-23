@@ -59,6 +59,8 @@ function swapElements(elementA, elementB) {
 	var bSibling = elementB.nextElementSibling;
 	parentA.insertBefore(elementB, aSibling);
 	parentB.insertBefore(elementA, bSibling);
+	currentSideBar = 
+		currentSideBar === "comments" ? "relatedVideos" : "comments";
 }
 
 function undoStyling(comments, sidebar) {
@@ -105,9 +107,12 @@ chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) 
 		var comments = document.getElementById("watch-discussion");
 		var sidebar = document.getElementById("watch7-sidebar-contents");
 		if (currentSideBar === "comments") {
-			swapElements(sidebar, comments);	
+			swapElements(sidebar, comments);
+			undoStyling(comments, sidebar);
 		} else {
-			swapCommentsAndVideos();
+			swapElements(sidebar, comments);
+			styleSidebar(sidebar);
+			styleComments(comments);
 		}
 	}
 });
