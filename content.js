@@ -52,6 +52,15 @@ function undoSwap() {
 	currentSideBar = "relatedVideos";
 }
 
+function swapElements(elementA, elementB) {
+	var parentA = elementA.parentElement;
+	var parentB = elementB.parentElement;
+	var aSibling = elementA.nextElementSibling;
+	var bSibling = elementB.nextElementSibling;
+	parentA.insertBefore(elementB, aSiblingib);
+	parentB.insertBefore(elementA, bSibling);
+}
+
 function undoStyling(comments, sidebar) {
 	comments.style.height = "";
 	comments.style.width = "";
@@ -101,6 +110,15 @@ chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) 
 	}
 });
 
+
+function swap(a, b) {
+	var parent_a = a.parentElement
+	var parent_b = b.parentElement
+	var a_sib = a.nextElementSibling
+	var b_sib = b.nextElementSibling
+	parent_a.insertBefore(b, a_sib)
+	parent_b.insertBefore(a, b_sib)
+}
 
 // TODO: fix issue comment section moving in theater mode
 /* Change comment section position to static in theater mode*/
