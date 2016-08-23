@@ -88,8 +88,8 @@ document.addEventListener("spfdone", function () {
 
 
 chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) {
-	comments = document.getElementById("watch-discussion");
-	sidebar = document.getElementById("watch7-sidebar-contents");
+	// comments = document.getElementById("watch-discussion");
+	// sidebar = document.getElementById("watch7-sidebar-contents");
 	if (request.action === "toggleSwap") {
 		swapElements(comments, sidebar);
 	}
