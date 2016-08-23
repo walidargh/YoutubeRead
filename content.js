@@ -69,8 +69,10 @@ function toggleView() {
 	defaultVideoView = !defaultVideoView;
 	if (defaultVideoView  && commentSideBar) {
 		comments.style.position = "fixed";
+		comments.style.marginTop = "10px";
 	} else {
 		comments.style.position = "relative";
+		comments.style.marginTop = "0px";
 	} 
 }
 
