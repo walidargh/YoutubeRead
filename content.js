@@ -18,11 +18,10 @@ function swapCommentsAndVideos() {
 
 function styleComments(comments) {
 	comments.style.height = "88vh";
-	comments.style.width = "39vw";
+	// comments.style.width = "39vw";
 	comments.style.overflowY = "scroll";
 	comments.style.overflowX = "hidden";
 	comments.style.position = defaultVideoView ? "fixed" : "relative";
-	comments.style.marginTop = defaultVideoView ? "10px" : "0px";
 	comments.addEventListener("scroll", loadMoreComments);
 }
 
