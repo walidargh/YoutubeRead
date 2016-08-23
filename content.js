@@ -1,8 +1,8 @@
-function moveCommentSection() {
-	var comments = document.getElementById("watch-discussion");
-	var sidebar = document.getElementById("watch7-sidebar-contents");
-	sidebar.insertBefore(comments, sidebar.firstChild);
-}
+// function moveCommentSection() {
+// 	var comments = document.getElementById("watch-discussion");
+// 	var sidebar = document.getElementById("watch7-sidebar-contents");
+// 	sidebar.insertBefore(comments, sidebar.firstChild);
+// }
 
 function swapCommentsAndVideos() {
 	var comments = document.getElementById("watch-discussion");
@@ -41,23 +41,23 @@ function styleSidebar(sidebar) {
 	autoPlayBar.style.position = "relative";
 }
 
-function undoSwap() {
-	var comments = document.getElementById("watch-discussion");
-	var sidebar = document.getElementById("watch7-sidebar-contents");
-	var commentsParent = comments.parentElement;
-	var sidebarParent = sidebar.parentElement;
-	sidebarParent.appendChild(comments);
-	commentsParent.insertBefore(sidebar, commentsParent.firstChild);
-	undoStyling(comments, sidebar);
-	currentSideBar = "relatedVideos";
-}
+// function undoSwap() {
+// 	var comments = document.getElementById("watch-discussion");
+// 	var sidebar = document.getElementById("watch7-sidebar-contents");
+// 	var commentsParent = comments.parentElement;
+// 	var sidebarParent = sidebar.parentElement;
+// 	sidebarParent.appendChild(comments);
+// 	commentsParent.insertBefore(sidebar, commentsParent.firstChild);
+// 	undoStyling(comments, sidebar);
+// 	currentSideBar = "relatedVideos";
+// }
 
 function swapElements(elementA, elementB) {
 	var parentA = elementA.parentElement;
 	var parentB = elementB.parentElement;
 	var aSibling = elementA.nextElementSibling;
 	var bSibling = elementB.nextElementSibling;
-	parentA.insertBefore(elementB, aSiblingib);
+	parentA.insertBefore(elementB, aSibling);
 	parentB.insertBefore(elementA, bSibling);
 }
 
@@ -102,8 +102,10 @@ document.addEventListener("spfdone", function () {
 
 chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) {
 	if (request.action === "toggleSwap") {
+		var comments = document.getElementById("watch-discussion");
+		var sidebar = document.getElementById("watch7-sidebar-contents");
 		if (currentSideBar === "comments") {
-			undoSwap();	
+			swapElements(sidebar, comments);	
 		} else {
 			swapCommentsAndVideos();
 		}
@@ -111,14 +113,6 @@ chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) 
 });
 
 
-function swap(a, b) {
-	var parent_a = a.parentElement
-	var parent_b = b.parentElement
-	var a_sib = a.nextElementSibling
-	var b_sib = b.nextElementSibling
-	parent_a.insertBefore(b, a_sib)
-	parent_b.insertBefore(a, b_sib)
-}
 
 // TODO: fix issue comment section moving in theater mode
 /* Change comment section position to static in theater mode*/
