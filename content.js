@@ -94,18 +94,19 @@ document.addEventListener("spfdone", function () {
 });
 
 document.addEventListener("scroll", function () {
-	var player = document.getElementsByTagName("video")[0];
+	var player = document.getElementById("theater-background");
 	var comments = document.getElementById("watch-discussion");
+	var commentsRect = comments.getBoundingClientRect();
 	var playerRect = player.getBoundingClientRect();
 	if (commentSideBar && !defaultVideoView) {
-		if (playerRect.bottom < 50) {
+		if (playerRect.bottom < 50 && commentsRect.bottom  ) {
 			comments.style.top = "0";
 			comments.style.marginTop = "60px";
 			comments.style.position = "fixed";
 		} else {
 			comments.style.top = "";
 			comments.style.marginTop = "0";
-			comments.style.position = "relative";
+			comments.style.position = "absolute";
 		}
 	} 
 });
