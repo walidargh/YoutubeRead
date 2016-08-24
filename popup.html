@@ -2,12 +2,30 @@
 <html>
 	<head>
 		<title>YouTube Read</title>
+		<style>
+			#switch {
+			  background-color: blue;
+			  height: 50px;
+			  width: 100px;
+			  padding: 0px;
+			  border-radius: 100px;
+			}
+
+			#slider {
+			  display: inline-block;
+			  background-color: white;
+			  height: 40px;
+			  width: 40px;
+			  margin: 5px;
+			  border-radius: 100%;
+			}
+		</style>
 		<script type="text/javascript" src="popup.js"></script>
 	</head>
 
 	<body>
-		<div id="switch" style="background-color: blue; width: 100px; height: 100px">
-			<div id="circle" style="background-color:white; width: 80px; height: 80px; border-radius: 100%"></div>
+		<div id="switch">
+			<div id="slider"></div>
 		</div>
 	</body>
 </html>
