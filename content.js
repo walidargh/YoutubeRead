@@ -80,7 +80,7 @@ function toggleView() {
 var commentSideBar;
 var button;
 var defaultVideoView;
-var commentLoader
+var commentLoader;
 
 document.addEventListener("spfdone", function () {
 	button = null;
@@ -93,6 +93,22 @@ document.addEventListener("spfdone", function () {
 	swapElements(comments, sidebar);
 });
 
+document.addEventListener("scroll", function () {
+	var player = document.getElementsByTagName("video")[0];
+	var comments = document.getElementById("watch-discussion");
+	var playerRect = player.getBoundingClientRect();
+	if (commentSideBar && !defaultVideoView) {
+		if (playerRect.bottom < 50) {
+			comments.style.top = "0";
+			comments.style.marginTop = "60px";
+			comments.style.position = "fixed";
+		} else {
+			comments.style.top = "";
+			comments.style.marginTop = "0";
+			comments.style.position = "relative";
+		}
+	} 
+});
 
 chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) {
 	var comments = document.getElementById("watch-discussion");
