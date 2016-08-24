@@ -7,7 +7,7 @@ function styleComments() {
 	comments.style.overflowX = "hidden";
 	comments.style.position = defaultVideoView ? "fixed" : "relative";
 	comments.style.marginTop = defaultVideoView ? "10px" : "0px";
-	comments.addEventListener("scroll", loadMoreComments);
+	commentLoader = comments.addEventListener("scroll", loadMoreComments);
 }
 
 function loadMoreComments(event) {
@@ -54,6 +54,7 @@ function undoStyling() {
 	comments.style.position = "";
 	comments.style.marginTop = "";
 	sidebar.style.padding = "";
+	comments.removeEventListener("scroll", commentLoader);
 	var sidebarHead = document.getElementsByClassName("watch-sidebar-head")[0];
 	sidebarHead.style.margin = "0px";
 }
@@ -79,6 +80,7 @@ function toggleView() {
 var commentSideBar;
 var button;
 var defaultVideoView;
+var commentLoader
 
 document.addEventListener("spfdone", function () {
 	button = null;
