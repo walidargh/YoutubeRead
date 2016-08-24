@@ -5,12 +5,12 @@
 		<style>
 			#switch {
 				display: flex;
-				justify-content: flex-start;
 			  background-color: red;
 			  height: 30px;
 			  width: 60px;
 			  padding: 0px;
 			  border-radius: 100px;
+			  transition: 1s;
 			}
 
 			#slider {
@@ -21,12 +21,24 @@
 			  border-radius: 100%;
 			}
 
+			.active-switch {
+				justify-content: flex-end;
+				background-color: red;
+				transition: 1s;
+			}
+
+			.inactive-switch {
+				justify-content: flex-end;
+				background-color: grey;
+				transition: 1s;
+			}
+
 		</style>
 		<script type="text/javascript" src="popup.js"></script>
 	</head>
 
 	<body>
-		<div id="switch">
+		<div id="switch" class="active-switch">
 			<div id="slider"></div>
 		</div>
 	</body>

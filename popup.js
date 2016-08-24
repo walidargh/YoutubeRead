@@ -22,10 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var toggleSwitch = document.getElementById("switch");
   toggleSwitch.addEventListener("click", function () {
     toggleCommentAndVideoSwap();
-    toggleSwitch.style.justifyContent = 
-      (toggleSwitch.style.justifyContent === "flex-end") 
-      ? "flex-start" 
-      : "flex-end";
+    toggleSwitch.classList.addClass("inactive-switch");
   });
 });
 
