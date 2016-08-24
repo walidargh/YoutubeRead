@@ -21,9 +21,10 @@ function moveCommentSection() {
 document.addEventListener("DOMContentLoaded", function() {
   var toggleSwitch = document.getElementById("switch");
   toggleSwitch.addEventListener("click", function () {
-    toggleCommentAndVideoSwap()
-    var slider = toggleSwitch.firstChild
-    slider.style.align-self = "flex-end"
-  );
+    toggleCommentAndVideoSwap();
+    toggleSwitch.style.justifyContent = 
+      toggleSwitch.style.justifyContent === "flex-end" ? 
+      "flex-start" : "flex-end";
+  });
 });
 
