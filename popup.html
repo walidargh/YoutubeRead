@@ -4,33 +4,36 @@
 		<title>YouTube Read</title>
 		<style>
 			#switch {
-				display: flex;
-			  background-color: red;
 			  height: 30px;
 			  width: 60px;
-			  padding: 0px;
+			  padding: 1px;
 			  border-radius: 100px;
-			  transition: 1s;
+        transition: 0.2s;
 			}
-
+			
 			#slider {
+			  position: relative;
 			  background-color: white;
 			  height: 24px;
 			  width: 24px;
-			  margin: 3px;
 			  border-radius: 100%;
+			  transition: 0.2s;
 			}
-
+			
 			.active-switch {
-				justify-content: flex-start;
-				background-color: red;
-				transition: 1s;
+			  background-color: red;
 			}
-
+			
 			.inactive-switch {
-				justify-content: flex-end;
-				background-color: grey;
-				transition: 1s;
+			  background-color: grey;
+			}
+			
+			.active-slider {
+			  margin: 3px 33px 3px 3px;
+			}
+			
+			.inactive-slider {
+        margin: 3px 3px 3px 33px;
 			}
 
 		</style>
@@ -39,7 +42,7 @@
 
 	<body>
 		<div id="switch" class="active-switch">
-			<div id="slider"></div>
+			<div id="slider" class="active-slider"></div>
 		</div>
 	</body>
 </html>
