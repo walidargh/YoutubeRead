@@ -19,7 +19,7 @@ function moveCommentSection() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-  var root = document.getElementById("root");
+  var root = document.getElementById("switch");
   root.addEventListener("click", toggleCommentAndVideoSwap);
 });
 
