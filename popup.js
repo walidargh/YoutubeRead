@@ -23,8 +23,9 @@ document.addEventListener("DOMContentLoaded", function() {
   toggleSwitch.addEventListener("click", function () {
     toggleCommentAndVideoSwap();
     toggleSwitch.style.justifyContent = 
-      toggleSwitch.style.justifyContent === "flex-end" ? 
-      "flex-start" : "flex-end";
+      (toggleSwitch.style.justifyContent === "flex-end") 
+      ? "flex-start" 
+      : "flex-end";
   });
 });
 
