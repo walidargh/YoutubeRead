@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
   var toggleSwitch = document.getElementById("switch");
   var slider = document.getElementById("slider");
   toggleSwitch.addEventListener("click", function () {
-    toggleCommentAndVideoSwap();
     if (toggleSwitch.classList.contains("active-switch")) {
       toggleSwitch.classList.remove("active-switch");
       slider.classList.remove("active-slider");
@@ -34,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
       toggleSwitch.classList.add("active-switch");
       slider.classList.add("active-slider");
     }
+    toggleCommentAndVideoSwap();
   });
 });
 
