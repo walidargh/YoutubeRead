@@ -3,6 +3,16 @@
 	<head>
 		<title>YouTube Read</title>
 		<style>
+			.wrapper {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				width: 100px;
+			}
+			
+			h1 {
+				font-size: 20px;
+			}
 			#switch {
 			  height: 30px;
 			  width: 60px;
@@ -41,8 +51,11 @@
 	</head>
 
 	<body>
-		<div id="switch" class="active-switch">
-			<div id="slider" class="active-slider"></div>
-		</div>
+	<div class="wrapper">
+		<h1>Enable Read Mode</h1>
+			<div id="switch" class="active-switch">
+				<div id="slider" class="active-slider"></div>
+			</div>
+	</div>
 	</body>
 </html>
