@@ -19,7 +19,11 @@ function moveCommentSection() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-  var root = document.getElementById("switch");
-  root.addEventListener("click", toggleCommentAndVideoSwap);
+  var toggleSwitch = document.getElementById("switch");
+  toggleSwitch.addEventListener("click", function () {
+    toggleCommentAndVideoSwap()
+    var slider = toggleSwitch.firstChild
+    slider.style.align-self = "flex-end"
+  );
 });
 
