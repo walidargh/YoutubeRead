@@ -2,6 +2,9 @@
 
 YouTube Read is a chrome extension the allows users to simulataneously watch youtube videos and browse the comment section. It is  built using JavaScript, CSS, and HTML.
 
+[demo]: ./read_demo.gif
+
+![demo]
 ## Page Detection
 
 YouTube Read detects the player viewing mode, tracks the position of the comment section, and detects YouTube spf events to ensure that the viewing experience remains consistent.
