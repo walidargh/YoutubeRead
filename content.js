@@ -12,7 +12,8 @@ function styleComments() {
 
 function loadMoreComments(event) {
 	if (detectLoadMoreComments) {
-		var loadButton = document.getElementsByClassName("yt-uix-button yt-uix-button-size-default yt-uix-button-default load-more-button yt-uix-load-more comment-section-renderer-paginator yt-uix-sessionlink")[0];
+		var loadButton = 
+			document.getElementsByClassName("yt-uix-button yt-uix-button-size-default yt-uix-button-default load-more-button yt-uix-load-more comment-section-renderer-paginator yt-uix-sessionlink")[0];
 		loadButton.click();
 	}
 }
@@ -116,9 +117,17 @@ chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) 
 	var sidebar = document.getElementById("watch7-sidebar-contents");
 	if (request.action === "toggleSwap") {
 		swapElements(comments, sidebar);
+		senderResponse({swap: "successful"});
 	}
 });
 
+commentSideBar = false;
+button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
+var comments = document.getElementById("watch-discussion");
+var sidebar = document.getElementById("watch7-sidebar-contents");
+button.addEventListener("click", toggleView);
+defaultVideoView = button.title === "Default view" ? false : true;
+swapElements(comments, sidebar);
 
 
 // TODO: fix issue comment section moving in theater mode
