@@ -10,6 +10,17 @@ YouTube Read detects the player viewing mode, tracks the position of the comment
 
 The content script performes DOM manipulations when an spf event has completed. The popup offers a button which allows users to quickly toggle the "Reading" mode. This is done using the chrome.tabs.query and chrome.tabs.onMessage API to communicate betweeen the content and popup scripts.
 
+```javascript
+chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) {
+    var comments = document.getElementById("watch-discussion");
+    var sidebar = document.getElementById("watch7-sidebar-contents");
+    if (request.action === "toggleSwap") {
+        swapElements(comments, sidebar);
+        senderResponse({swap: "successful"});
+    }
+});
+```
+
 ## Future Plans
 
 ### Timestamp Highlight
