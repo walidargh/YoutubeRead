@@ -22,21 +22,16 @@ function toggleCommentAndVideoSwap() {
           slider.classList.remove("inactive-slider");
           toggleSwitch.classList.add("active-switch");
           slider.classList.add("active-slider");
-       }
+        }
       }
     });
   });
 }
 
-function moveCommentSection() {
-	var comments = document.getElementById("watch-discussion");
-	var sidebar = document.getElementById("watch7-sidebar-contents");
-	sidebar.insertBefore(comments, sidebar.firstChild);
-}
+function 
 
 
 document.addEventListener("DOMContentLoaded", function() {
   var toggleSwitch = document.getElementById("switch");
   toggleSwitch.addEventListener("click", toggleCommentAndVideoSwap);
 });
-

@@ -85,7 +85,7 @@ var commentLoader;
 
 document.addEventListener("spfdone", function () {
 	button = null;
-	// commentSideBar = false;
+	commentSideBar = false;
 	button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
 	var comments = document.getElementById("watch-discussion");
 	var sidebar = document.getElementById("watch7-sidebar-contents");
