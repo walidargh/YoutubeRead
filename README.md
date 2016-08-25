@@ -1,4 +1,7 @@
 # YouTube Read
+[Chrome Web Store][live]
+
+[live]:https://chrome.google.com/webstore/detail/youtube-read/clkagagdbmhalkhdfoiahbgdgepijhfg
 
 YouTube Read is a chrome extension the allows users to simulataneously watch youtube videos and browse the comment section. It is  built using JavaScript, CSS, and HTML.
 
