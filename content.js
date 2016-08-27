@@ -126,8 +126,9 @@ document.addEventListener("scroll", function () {
 			comments.style.marginTop = "60px";
 			comments.style.position = "fixed";
 		} else if (footerRect.top <= 630) {
-			comments.position = "absolute";
-			comments.style.top = String(getCoords(comments.top) - commentsOffSet) + "px";
+			comments.style.top = String(getCoords(comments).top - commentsOffSet) + "px";
+			comments.style.marginTop = "0";
+			comments.style.position = "absolute";
 		} else {
 			comments.style.top = "";
 			comments.style.marginTop = "0";
