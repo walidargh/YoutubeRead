@@ -78,6 +78,24 @@ function toggleView() {
 	} 
 }
 
+function getCoords(elem) {
+    var box = elem.getBoundingClientRect();
+
+    var body = document.body;
+    var docEl = document.documentElement;
+
+    var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+    var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+
+    var clientTop = docEl.clientTop || body.clientTop || 0;
+    var clientLeft = docEl.clientLeft || body.clientLeft || 0;
+
+    var top  = box.top +  scrollTop - clientTop;
+    var left = box.left + scrollLeft - clientLeft;
+
+    return { top: Math.round(top), left: Math.round(left) };
+}
+
 var commentSideBar;
 var button;
 var defaultVideoView;
@@ -99,11 +117,17 @@ document.addEventListener("scroll", function () {
 	var comments = document.getElementById("watch-discussion");
 	var commentsRect = comments.getBoundingClientRect();
 	var playerRect = player.getBoundingClientRect();
+	var commentsOffSet = player.offsetHeight + 60;
+	var footer = document.getElementById("footer");
+	var footerRect = footer.getBoundingClientRect();
 	if (commentSideBar && !defaultVideoView) {
-		if (playerRect.bottom < 50 && commentsRect.bottom  ) {
+		if (playerRect.bottom < 50 && footerRect.top > 630) {
 			comments.style.top = "0";
 			comments.style.marginTop = "60px";
 			comments.style.position = "fixed";
+		} else if (footerRect.top <= 630) {
+			comments.position = "absolute";
+			comments.style.top = String(getCoords(comments) - commentsOffSet) + "px";
 		} else {
 			comments.style.top = "";
 			comments.style.marginTop = "0";
@@ -111,6 +135,7 @@ document.addEventListener("scroll", function () {
 		}
 	} 
 });
+
 
 chrome.runtime.onMessage.addListener( function(request, sender, senderResponse) {
 	var comments = document.getElementById("watch-discussion");
