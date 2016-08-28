@@ -35,8 +35,7 @@ function swapElements(elementA, elementB) {
 	var bSibling = elementB.nextElementSibling;
 	parentA.insertBefore(elementB, aSibling);
 	parentB.insertBefore(elementA, bSibling);
-	// inReadMode = !inReadMode;
-	// chrome.storage.sync.set({'inReadMode': inReadMode}, function (obj) {console.log(obj)})
+	chrome.storage.sync.get('inReadMode', function(result) {inReadMode = result.inReadMode});
 	if (inReadMode) {
 		styleComments();
 		styleSidebar();
@@ -106,11 +105,7 @@ document.addEventListener("spfdone", function () {
 	var sidebar = document.getElementById("watch7-sidebar-contents");
 	button.addEventListener("click", toggleView);
 	defaultVideoView = button.title === "Default view" ? false : true;
-	if (inReadMode) {
-		swapElements(comments, sidebar);
-	} else if (inReadMode !== undefined) {
-		undoStyling();
-	}
+	if (inReadMode) {swapElements(comments, sidebar)};
 });
 
 document.addEventListener("scroll", function () {

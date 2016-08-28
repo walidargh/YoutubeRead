@@ -43,10 +43,11 @@ function toggleCommentAndVideoSwap() {
 // }
 
 document.addEventListener("DOMContentLoaded", function() {
-  getSidebarState();
+  var inReadMode
+  chrome.storage.sync.get('inReadMode', function(result) {inReadMode = result.inReadMode});
   var toggleSwitch = document.getElementById("switch");
   toggleSwitch.addEventListener("click", function () {
-    chrome.storage.sync.set({'inReadMode': inReadMode}, function (obj) {console.log(obj)})
-    toggleCommentAndVideoSwap);
-  }
+    chrome.storage.sync.set({'inReadMode': !inReadMode}, function (obj) {console.log(obj)})
+    toggleCommentAndVideoSwap();
+  });
 });
