@@ -36,6 +36,7 @@ function swapElements(elementA, elementB) {
 	parentA.insertBefore(elementB, aSibling);
 	parentB.insertBefore(elementA, bSibling);
 	commentSideBar = !commentSideBar;
+	chrome.storage.sync.set({'inReadMode': commentSideBar}, function (obj) {console.log(obj)})
 	if (commentSideBar) {
 		styleComments();
 		styleSidebar();
@@ -80,36 +81,31 @@ function toggleView() {
 
 function getCoords(elem) {
     var box = elem.getBoundingClientRect();
-
     var body = document.body;
     var docEl = document.documentElement;
-
     var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
     var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
-
     var clientTop = docEl.clientTop || body.clientTop || 0;
     var clientLeft = docEl.clientLeft || body.clientLeft || 0;
-
     var top  = box.top +  scrollTop - clientTop;
     var left = box.left + scrollLeft - clientLeft;
-
     return { top: Math.round(top), left: Math.round(left) };
 }
 
-var commentSideBar;
 var button;
 var defaultVideoView;
 var commentLoader;
 
 document.addEventListener("spfdone", function () {
-	button = null;
-	commentSideBar = false;
+	chrome.storage.sync.get('inReadMode', function(result) {commentSideBar = result.inReadMode});
+	commentSideBar = commentSideBar === undefined ? true : commentSideBar
+	chrome.storage.sync.set({'inReadMode': true}, function (obj) {console.log(obj)})
 	button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
 	var comments = document.getElementById("watch-discussion");
 	var sidebar = document.getElementById("watch7-sidebar-contents");
 	button.addEventListener("click", toggleView);
 	defaultVideoView = button.title === "Default view" ? false : true;
-	if (!commentSideBar) {swapElements(comments, sidebar);}
+	if (commentSideBar) {swapElements(comments, sidebar);}
 });
 
 document.addEventListener("scroll", function () {
