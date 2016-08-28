@@ -106,7 +106,7 @@ document.addEventListener("spfdone", function () {
 	var sidebar = document.getElementById("watch7-sidebar-contents");
 	button.addEventListener("click", toggleView);
 	defaultVideoView = button.title === "Default view" ? false : true;
-	if (!inReadMode) {swapElements(comments, sidebar);}
+	if (inReadMode) {swapElements(comments, sidebar);}
 });
 
 document.addEventListener("scroll", function () {
