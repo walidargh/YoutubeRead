@@ -27,24 +27,26 @@ function toggleCommentAndVideoSwap() {
   });
 }
 
-function getSidebarState() {
-  var queryInfo = {
-    active: true,
-    currentWindow: true
-  };
-  chrome.tabs.query(queryInfo, function(tabs) {
-    var tab = tabs[0];
-    chrome.tabs.sendMessage(tab.id, {commentSidebar: true}, function (response) {
-      debugger
-      commentSidebar = response.commentSidebar;
-      console.log(commentSidebar);
-    });
-  });
-}
+// function getSidebarState() {
+//   var queryInfo = {
+//     active: true,
+//     currentWindow: true
+//   };
+//   chrome.tabs.query(queryInfo, function(tabs) {
+//     var tab = tabs[0];
+//     chrome.tabs.sendMessage(tab.id, {commentSidebar: true}, function (response) {
+//       debugger
+//       commentSidebar = response.commentSidebar;
+//       console.log(commentSidebar);
+//     });
+//   });
+// }
 
-var commentSidebar = false;
 document.addEventListener("DOMContentLoaded", function() {
   getSidebarState();
   var toggleSwitch = document.getElementById("switch");
-  toggleSwitch.addEventListener("click", toggleCommentAndVideoSwap);
+  toggleSwitch.addEventListener("click", function () {
+    chrome.storage.sync.set({'inReadMode': inReadMode}, function (obj) {console.log(obj)})
+    toggleCommentAndVideoSwap);
+  }
 });
