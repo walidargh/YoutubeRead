@@ -35,9 +35,9 @@ function swapElements(elementA, elementB) {
 	var bSibling = elementB.nextElementSibling;
 	parentA.insertBefore(elementB, aSibling);
 	parentB.insertBefore(elementA, bSibling);
-	commentSideBar = !commentSideBar;
-	chrome.storage.sync.set({'inReadMode': commentSideBar}, function (obj) {console.log(obj)})
-	if (commentSideBar) {
+	commentSidebar = !commentSidebar;
+	chrome.storage.sync.set({'inReadMode': commentSidebar}, function (obj) {console.log(obj)})
+	if (commentSidebar) {
 		styleComments();
 		styleSidebar();
 	} else {
@@ -70,7 +70,7 @@ function detectLoadMoreComments() {
 function toggleView() {
 	var comments = document.getElementById("watch-discussion");
 	defaultVideoView = !defaultVideoView;
-	if (defaultVideoView  && commentSideBar) {
+	if (defaultVideoView  && commentSidebar) {
 		comments.style.position = "fixed";
 		comments.style.marginTop = "10px";
 	} else {
@@ -97,15 +97,15 @@ var defaultVideoView;
 var commentLoader;
 
 document.addEventListener("spfdone", function () {
-	chrome.storage.sync.get('inReadMode', function(result) {commentSideBar = result.inReadMode});
-	commentSideBar = commentSideBar === undefined ? true : commentSideBar
-	chrome.storage.sync.set({'inReadMode': true}, function (obj) {console.log(obj)})
+	chrome.storage.sync.get('inReadMode', function(result) {commentSidebar = result.inReadMode});
+	commentSidebar = commentSidebar === undefined ? false : commentSidebar
+	chrome.storage.sync.set({'inReadMode': commentSidebar}, function (obj) {console.log(obj)})
 	button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
 	var comments = document.getElementById("watch-discussion");
 	var sidebar = document.getElementById("watch7-sidebar-contents");
 	button.addEventListener("click", toggleView);
 	defaultVideoView = button.title === "Default view" ? false : true;
-	if (commentSideBar) {swapElements(comments, sidebar);}
+	if (!commentSidebar) {swapElements(comments, sidebar);}
 });
 
 document.addEventListener("scroll", function () {
@@ -116,7 +116,7 @@ document.addEventListener("scroll", function () {
 	var commentsOffSet = player.offsetHeight + 60;
 	var footer = document.getElementById("footer");
 	var footerRect = footer.getBoundingClientRect();
-	if (commentSideBar && !defaultVideoView) {
+	if (commentSidebar && !defaultVideoView) {
 		if (playerRect.bottom < 50 && footerRect.top > 630) {
 			comments.style.top = "0";
 			comments.style.marginTop = "60px";
