@@ -35,13 +35,15 @@ function swapElements(elementA, elementB) {
 	var bSibling = elementB.nextElementSibling;
 	parentA.insertBefore(elementB, aSibling);
 	parentB.insertBefore(elementA, bSibling);
-	chrome.storage.sync.get('inReadMode', function(result) {inReadMode = result.inReadMode});
-	if (inReadMode) {
-		styleComments();
-		styleSidebar();
-	} else {
-		undoStyling();
-	}
+	chrome.storage.sync.get('inReadMode', function(result) {
+		inReadMode = result.inReadMode
+		if (inReadMode) {
+			styleComments();
+			styleSidebar();
+		} else {
+			undoStyling();
+		}
+	});
 }
 
 function undoStyling() {
@@ -97,15 +99,15 @@ var commentLoader;
 var inReadMode;
 
 document.addEventListener("spfdone", function () {
-	chrome.storage.sync.get('inReadMode', function(result) {inReadMode = result.inReadMode});
-	inReadMode = inReadMode === undefined ? false : inReadMode
-	chrome.storage.sync.set({'inReadMode': inReadMode}, function (obj) {console.log(obj)})
-	button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
-	var comments = document.getElementById("watch-discussion");
-	var sidebar = document.getElementById("watch7-sidebar-contents");
-	button.addEventListener("click", toggleView);
-	defaultVideoView = button.title === "Default view" ? false : true;
-	if (inReadMode) {swapElements(comments, sidebar)};
+	chrome.storage.sync.get('inReadMode', function(result) {
+		inReadMode = result.inReadMode
+		button = document.getElementsByClassName("ytp-size-button ytp-button")[0];
+		var comments = document.getElementById("watch-discussion");
+		var sidebar = document.getElementById("watch7-sidebar-contents");
+		button.addEventListener("click", toggleView);
+		defaultVideoView = button.title === "Default view" ? false : true;
+		if (inReadMode) {swapElements(comments, sidebar)};
+	});
 });
 
 document.addEventListener("scroll", function () {
