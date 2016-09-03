@@ -33,10 +33,11 @@ function swapElements(elementA, elementB) {
 	var parentB = elementB.parentElement;
 	var aSibling = elementA.nextElementSibling;
 	var bSibling = elementB.nextElementSibling;
-	parentA.insertBefore(elementB, aSibling);
-	parentB.insertBefore(elementA, bSibling);
+	console.log('I am in' + defaultVideoView);
 	chrome.storage.sync.get('inReadMode', function(result) {
-		inReadMode = result.inReadMode
+		parentA.insertBefore(elementB, aSibling);
+		parentB.insertBefore(elementA, bSibling);
+		inReadMode = result.inReadMode;
 		if (inReadMode) {
 			styleComments();
 			styleSidebar();

@@ -34,14 +34,16 @@ function toggleSlider() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  var inReadMode
+  var inReadMode;
   chrome.storage.sync.get('inReadMode', function(result) {
-    inReadMode = result.inReadMode
+    inReadMode = result.inReadMode;
     toggleSlider();
   });
   var toggleSwitch = document.getElementById("switch");
   toggleSwitch.addEventListener("click", function () {
-    chrome.storage.sync.set({'inReadMode': !inReadMode}, function (obj) {console.log(obj)})
-    toggleCommentAndVideoSwap();
+    chrome.storage.sync.set({'inReadMode': !inReadMode}, function (obj) {
+      console.log(obj);
+      toggleCommentAndVideoSwap();
+    });
   });
 });
