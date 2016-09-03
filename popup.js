@@ -38,12 +38,13 @@ document.addEventListener("DOMContentLoaded", function() {
   chrome.storage.sync.get('inReadMode', function(result) {
     inReadMode = result.inReadMode;
     toggleSlider();
-  });
-  var toggleSwitch = document.getElementById("switch");
-  toggleSwitch.addEventListener("click", function () {
-    chrome.storage.sync.set({'inReadMode': !inReadMode}, function (obj) {
-      console.log(obj);
+    var toggleSwitch = document.getElementById("switch");
+    toggleSwitch.addEventListener("click", function () {
+      inReadMode = !inReadMode;
+      chrome.storage.sync.set({'inReadMode': inReadMode}, function (obj) {
+        console.log(obj);
       toggleCommentAndVideoSwap();
+      });
     });
   });
 });
